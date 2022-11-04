@@ -4,6 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 
 const { books } = require('../lib/books-data.js');
+const { songs } = require('../lib/songs-data.js');
 
 describe('books routes', () => {
   beforeEach(() => {
@@ -38,6 +39,31 @@ describe('books routes', () => {
       published: 2007,
     };
     expect(res.body).toEqual(nameOfTheWind);
+  });
+
+  afterAll(() => {
+    pool.end();
+  });
+});
+
+describe('songs routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+
+  it('/songs should return a list of songs', async () => {
+    const res = await request(app).get('/songs');
+    const expected = songs.map((song) => {
+      return {
+        id: song.id,
+        title: song.title,
+        artist: song.artist,
+        album: song.album,
+        genre: song.genre,
+        year: song.year,
+      };
+    });
+    expect(res.body).toEqual(expected);
   });
 
   afterAll(() => {
