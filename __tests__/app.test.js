@@ -56,6 +56,19 @@ describe('books songs routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('/songs/:id should return song detail', async () => {
+    const res = await request(app).get('/songs/1');
+    const selfControl = {
+      id: '1',
+      title: 'Self Control',
+      artist: 'Frank Ocean',
+      album: 'Blonde',
+      genre: 'R&B',
+      year: 2016,
+    };
+    expect(res.body).toEqual(selfControl);
+  });
+
   afterAll(() => {
     pool.end();
   });
