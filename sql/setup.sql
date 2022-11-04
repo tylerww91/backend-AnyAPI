@@ -23,3 +23,26 @@ VALUES
 ('Leviathan Wakes', 'The Expanse', 'James S.A. Corey', 'sci-fi', 'https://www.goodreads.com/book/show/8855321-leviathan-wakes?ac=1&from_search=true&qid=SRiyJKqH01&rank=1', 2011),
 ('The Rage of Dragons', 'The Burning', 'Evan Winter', 'fantasy', 'https://www.goodreads.com/book/show/41952489-the-rage-of-dragons?ac=1&from_search=true&qid=yhEq3yWbNy&rank=1', 2019),
 ('Theft of Swords', 'The Riyria Revelations', 'Michael J. Sullivan', 'fantasy', 'https://www.goodreads.com/book/show/10790290-theft-of-swords?ac=1&from_search=true&qid=4dzAXsD0ak&rank=1', 2011);
+
+DROP TABLE IF EXISTS songs;
+
+CREATE TABLE songs (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    title VARCHAR NOT NULL,
+    artist VARCHAR NOT NULL,
+    album VARCHAR NOT NULL,
+    genre VARCHAR NOT NULL,
+    year INT NOT NULL
+);
+
+INSERT INTO songs (title, artist, album, genre, year)
+VALUES
+('Self Control', 'Frank Ocean', 'Blonde', 'R&B', 2016),
+('Shadow Man', 'Noname', 'Telephone', 'Hip-Hop/Rap', 2016),
+('Above the Clouds', 'Gang Starr', 'Moment of Truth', 'Hip-Hop/Rap', 1998),
+('Doo Wop (That Thing)', 'Lauryn Hill', 'The Miseducation of Lauryn Hill', 'R&B/Soul', 1998),
+('Navajo', 'Masego', 'Single', 'R&B/Soul', 2017),
+('Praise The Lord (da Shine)', 'A$AP Rocky', 'Testing', 'Hip-Hop/Rap', 2018),
+('Nothing Can Change This Love', 'Sam Cooke', 'The Best of Sam Cooke', 'R&B/Soul', 1960),
+('Go Gina', 'SZA', 'CTRL', 'R&B/Soul', 2017),
+('The Waters', 'Anderson .Paak', 'Malibu', 'R&B/Soul', 2016);
