@@ -6,7 +6,7 @@ const app = require('../lib/app');
 const { books } = require('../lib/books-data.js');
 const { songs } = require('../lib/songs-data.js');
 
-describe('books routes', () => {
+describe('books songs routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
@@ -39,16 +39,6 @@ describe('books routes', () => {
       published: 2007,
     };
     expect(res.body).toEqual(nameOfTheWind);
-  });
-
-  afterAll(() => {
-    pool.end();
-  });
-});
-
-describe('songs routes', () => {
-  beforeEach(() => {
-    return setup(pool);
   });
 
   it('/songs should return a list of songs', async () => {
