@@ -26,6 +26,20 @@ describe('books routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('/books/:id should return book detail', async () => {
+    const res = await request(app).get('/books/1');
+    const nameOfTheWind = {
+      id: '1',
+      title: 'Name of the Wind',
+      series: 'The King Killer Chronicles',
+      author: 'Patrick Rothfuss',
+      genre: 'fantasy',
+      url: 'https://www.goodreads.com/book/show/186074.The_Name_of_the_Wind?from_search=true&from_srp=true&qid=Vne38oZcxp&rank=1',
+      published: 2007,
+    };
+    expect(res.body).toEqual(nameOfTheWind);
+  });
+
   afterAll(() => {
     pool.end();
   });
